@@ -1,0 +1,104 @@
+.profile {
+  display: flex;
+  max-width: 882px;
+  margin: auto;
+  padding-top: 36.25px;
+  padding-bottom: 50px;
+  align-items: center;
+}
+
+.profile__user {
+  margin-left: 20px;
+}
+
+.profile__edit {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-right: 29px;
+
+  &:hover {
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      border-radius: 50%;
+    }
+
+    .profile__edit-pencil {
+      display: block;
+    }
+  }
+}
+
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile__edit-pencil {
+  position: absolute;
+  z-index: 2;
+  display: none;
+}
+
+.profile__info {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.profile__name {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 56px;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.479);
+}
+
+.profile__occupation {
+  color: #ffffff;
+  height: 18px;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  margin: 0;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.479);
+}
+
+.profile__bottom {
+  border-color: #ffffff;
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.profile__bottom-add {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+@media screen AND (max-width: 500px) AND (min-width: 320px) {
+  .profile {
+    flex-direction: column;
+  }
+  .profile__bottom-add {
+    margin: auto;
+    margin-top: 20px;
+  }
+}

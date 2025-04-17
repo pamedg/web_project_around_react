@@ -1,0 +1,73 @@
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #09090962;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  margin: auto;
+}
+.popup__form {
+  width: 430px;
+  background-color: #fff;
+  height: 272px;
+  margin: auto;
+  display: flex;
+  gap: 43px;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+}
+
+.popup_show {
+  display: flex;
+}
+
+.popup__image-buttom {
+  position: absolute;
+  top: 30px;
+  right: 420px;
+  cursor: pointer;
+}
+
+.popup__picture {
+  width: 400px;
+  height: 500px;
+  margin-top: 80px;
+}
+
+.popup__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.popup__image {
+  max-width: 500px;
+  max-height: 90%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.popup__title {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.popup__close {
+  position: absolute;
+  width: 40.7px;
+  height: 40.7px;
+  color: #ffffff;
+  top: -40px;
+  right: -40px;
+}

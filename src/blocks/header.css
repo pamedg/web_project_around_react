@@ -1,0 +1,30 @@
+.header {
+  padding-bottom: 41px;
+  /*border-bottom: 1px solid #545454;*/
+  max-width: 882px;
+  margin: auto;
+  padding-top: 40px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.header::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% - 2rem);
+  height: 1px;
+  background-color: #545454;
+  bottom: 0;
+}
+
+.header__logo {
+  width: 173px;
+  height: 33px;
+}
+
+.header__line {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
