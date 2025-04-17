@@ -6,6 +6,9 @@ import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 
+import logo from "../images/logo.svg";
+import avatar from "../images/Avatar.png";
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -16,7 +19,11 @@ function App() {
         <Main />
         <section className="profile">
           <div className="profile__edit">
-            <img alt="imagen avantar" className="profile__avatar" />
+            <img
+              src={avatar}
+              alt="imagen avantar"
+              className="profile__avatar"
+            />
             <img className="profile__edit-pencil" src="../images/Pencil.svg" />
           </div>
           <div className="profile__user">
