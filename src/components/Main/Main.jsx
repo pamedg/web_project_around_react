@@ -1,3 +1,7 @@
+import { useState } from "react";
+export default function Main() {
+  const [popup, setPopup] = useState(null);
+
 import avatar from "../../images/Avatar.png";
 import pencil from "../../images/Pencil.svg";
 import editButton from "../../images/EditButton.svg";
