@@ -1,12 +1,26 @@
 import { useState } from "react";
-export default function Main() {
-  const [popup, setPopup] = useState(null);
-
 import avatar from "../../images/Avatar.png";
 import pencil from "../../images/Pencil.svg";
 import editButton from "../../images/EditButton.svg";
 import addButton from "../../images/AddButton.svg";
 export default function Main() {
+  const [popup, setPopup] = useState(null);
+  const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
+  const editProfilePopup = {
+    title: "Editar perfil",
+    children: <EditProfile />,
+  };
+  const editAvatarPopup = {
+    title: "Editar avatar",
+    children: <EditAvatar />,
+  };
+
+  const hadleOpenPopup = () => {};
+
+  const handleClosePopup = () => {
+    setPopup(null);
+  };
+
   return (
     <>
       <section className="profile">
