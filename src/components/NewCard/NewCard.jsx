@@ -1,9 +1,7 @@
 import { Children } from "react";
-
-export default function Main() {
-    const [popup, setPopup] = useState(null);
-    const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
 export default function NewCard() {
+  const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
+
   return (
     <>
       <div>
@@ -37,5 +35,4 @@ export default function NewCard() {
       </button>
     </>
   );
-}
 }
