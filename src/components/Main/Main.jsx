@@ -79,7 +79,7 @@ export default function Main() {
       </section>
       <section className="card-grid">
         {cards.map((card) => (
-          <card key={card._id} card={card} />git 
+          <card key={card._id} card={card} />
         ))}
       </section>
       {popup && (
