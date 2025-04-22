@@ -7,6 +7,7 @@ import Popup from "./Popup/Popup";
 import EditProfile from "../EditProfile/EditProfile.jsx";
 import EditAvatar from "../EditAvatar/EditAvatar.jsx";
 import NewCard from "../NewCard/NewCard.jsx";
+import Card from "./Card/Card.jsx";
 
 const cards = [
   {
@@ -78,7 +79,7 @@ export default function Main() {
       </section>
       <section className="card-grid">
         {cards.map((card) => (
-          <Card key={card._id} card={card} />
+          <card key={card._id} card={card} />git 
         ))}
       </section>
       {popup && (

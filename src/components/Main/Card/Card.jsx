@@ -1,5 +1,9 @@
 export default function Card(props) {
+  if (!props.card) {
+    return null;
+  }
   const { name, link, isliked } = props.card;
+
   return (
     <>
       <template className="template-card">

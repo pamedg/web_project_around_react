@@ -2,6 +2,9 @@ import { useState } from "react";
 import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
+import Card from "./Main/Card/Card.jsx";
+import EditAvatar from "./EditAvatar/EditAvatar.jsx";
+import EditProfile from "./EditProfile/EditProfile.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,7 +16,8 @@ function App() {
         <Main />
         <Footer />
         <Card />
-
+        <EditAvatar />
+        <EditProfile />
         {/*<div className="popup" id="popup-image">
           <div className="popup__container">
             <img src="#" alt="" className="popup__image" />
