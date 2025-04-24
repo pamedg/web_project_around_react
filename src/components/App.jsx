@@ -15,9 +15,7 @@ function App() {
         <Header />
         <Main />
         <Footer />
-        <Card />
-        <EditAvatar />
-        <EditProfile />
+
         {/*<div className="popup" id="popup-image">
           <div className="popup__container">
             <img src="#" alt="" className="popup__image" />

@@ -32,7 +32,12 @@ console.log(cards);
 
 export default function Main() {
   const [popup, setPopup] = useState(null);
-  const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
+
+  const newCardPopup = {
+    title: "Nuevo lugar",
+    children: <NewCard />,
+  };
+
   const editProfilePopup = {
     title: "Editar perfil",
     children: <EditProfile />,
@@ -42,7 +47,7 @@ export default function Main() {
     children: <EditAvatar />,
   };
 
-  function hadleOpenPopup(popup) {
+  function handleOpenPopup(popup) {
     setPopup(popup);
   }
 
@@ -55,7 +60,12 @@ export default function Main() {
       <section className="profile">
         <div className="profile__edit">
           <img src={avatar} alt="imagen avantar" className="profile__avatar" />
-          <img className="profile__edit-pencil" src={pencil} />
+          <img
+            className="profile__edit-pencil"
+            src={pencil}
+            alt="icono de lapiz"
+            onClick={() => handleOpenPopup(editAvatarPopup)}
+          />
         </div>
         <div className="profile__user">
           <div className="profile__info">
@@ -64,6 +74,7 @@ export default function Main() {
               src={editButton}
               alt="boton para editar"
               className="profile__bottom"
+              onClick={() => handleOpenPopup(editProfilePopup)}
             />
           </div>
           <p className="profile__occupation"></p>
@@ -79,7 +90,7 @@ export default function Main() {
       </section>
       <section className="card-grid">
         {cards.map((card) => (
-          <card key={card._id} card={card} />
+          <Card key={card._id} card={card} />
         ))}
       </section>
       {popup && (

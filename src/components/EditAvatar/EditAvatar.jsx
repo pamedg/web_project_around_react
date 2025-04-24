@@ -8,7 +8,7 @@ export default function EditAvatar() {
           alt="boton para cerrar"
           id="close-profile-form-add"
         />
-        <h2 className="form__title">Actualizar avatar</h2>
+        <h2 className="form__title"></h2>
         <div>
           <input
             className="form__input"
