@@ -18,11 +18,11 @@ export default function EditAvatar() {
             minLength="2"
             maxLength="200"
             name="link"
-            placeholder="URL de la imagen"
+            placeholder="Nueva Foto de Perfil"
           />
           <span className="form__error input-avatar-error"></span>
         </div>
-        <button className="form__button" type="submit" id="addcard-form-button">
+        <button className="form__button" type="submit" id="profile-form-button">
           Guardar
         </button>
       </div>

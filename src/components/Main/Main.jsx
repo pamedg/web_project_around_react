@@ -48,23 +48,12 @@ export default function Main() {
     children: <EditAvatar />,
   };
 
-  const imagePopup = {
-    title: { tittle },
-    children: <ImagePopup />,
-  };
-
   function handleOpenPopup(popup) {
     setPopup(popup);
   }
 
   function handleClosePopup() {
     setPopup(null);
-  }
-
-  function handleClickPopup() {
-    setPopup((prevState) => {
-      return { ...prevState, isOpen: !prevState.isOpen };
-    });
   }
 
   return (
@@ -102,7 +91,7 @@ export default function Main() {
       </section>
       <section className="card-grid">
         {cards.map((card) => (
-          <Card key={card._id} card={card} />
+          <Card key={card._id} card={card} onCardClick={handleOpenPopup} />
         ))}
       </section>
       {popup && (

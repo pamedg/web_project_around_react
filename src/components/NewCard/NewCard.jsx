@@ -1,6 +1,6 @@
 import { Children } from "react";
 export default function NewCard() {
-  const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> };
+  const newCardPopup = { title: "New Place", children: <NewCard /> };
 
   return (
     <>
@@ -12,26 +12,26 @@ export default function NewCard() {
           required
           minLength="2"
           maxLength="40"
-          name="name"
-          placeholder="Nombre"
+          name="title"
+          placeholder="Titulo"
         />
         <span className="input-error input-name-error form__error"></span>
       </div>
       <div>
         <input
           className="form__input"
-          type="text"
-          id="input-about"
+          type="url"
+          id="input-image"
           required
           minLength="2"
           maxLength="200"
-          name="job"
-          placeholder=" Acerca de mí"
+          name="link"
+          placeholder=" URL de la imagen"
         />
-        <span className="input-error input-about-error form__error"></span>
+        <span className="form__error input-image-error"></span>
       </div>
-      <button className="form__button" type="submit" id="profile-form-button">
-        Guardar
+      <button className="form__button" type="submit" id="addCard-form-button">
+        Save
       </button>
     </>
   );
