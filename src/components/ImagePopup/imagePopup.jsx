@@ -1,5 +1,5 @@
 export default function ImagePopup(props) {
-  const { card, onClose, title } = props;
+  const { card, onClose, name, link } = props;
   if (!card) {
     return null;
   }
