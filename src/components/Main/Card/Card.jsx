@@ -10,7 +10,7 @@ export default function Card(props) {
         <img src={link} alt="" className="card__image" />
         <div alt="boton de eliminar" className="card__bottom-trash"></div>
         <div className="card__description">
-          <h3 className="card__footer">{name}</h3>c
+          <h3 className="card__footer">{name}</h3>
           <div alt="boton de like" className="card__bottom-like"></div>
         </div>
       </div>

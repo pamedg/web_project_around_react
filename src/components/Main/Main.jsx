@@ -8,6 +8,7 @@ import EditProfile from "../EditProfile/EditProfile.jsx";
 import EditAvatar from "../EditAvatar/EditAvatar.jsx";
 import NewCard from "../NewCard/NewCard.jsx";
 import Card from "./Card/Card.jsx";
+import ImagePopup from "../ImagePopup/imagePopup.jsx";
 
 const cards = [
   {
@@ -47,12 +48,23 @@ export default function Main() {
     children: <EditAvatar />,
   };
 
+  const imagePopup = {
+    title: { tittle },
+    children: <ImagePopup />,
+  };
+
   function handleOpenPopup(popup) {
     setPopup(popup);
   }
 
   function handleClosePopup() {
     setPopup(null);
+  }
+
+  function handleClickPopup() {
+    setPopup((prevState) => {
+      return { ...prevState, isOpen: !prevState.isOpen };
+    });
   }
 
   return (
@@ -69,7 +81,7 @@ export default function Main() {
         </div>
         <div className="profile__user">
           <div className="profile__info">
-            <h1 className="profile__name"></h1>
+            <h1 className="profile__name">Lara </h1>
             <img
               src={editButton}
               alt="boton para editar"
@@ -77,7 +89,7 @@ export default function Main() {
               onClick={() => handleOpenPopup(editProfilePopup)}
             />
           </div>
-          <p className="profile__occupation"></p>
+          <p className="profile__occupation">Bailarina</p>
         </div>
         <img
           src={addButton}
