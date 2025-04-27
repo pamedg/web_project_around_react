@@ -1,5 +1,5 @@
 import { useState } from "react";
-import avatar from "../../images/Avatar.png";
+import avatar from "../../images/avatar.png";
 import pencil from "../../images/Pencil.svg";
 import editButton from "../../images/EditButton.svg";
 import addButton from "../../images/AddButton.svg";
