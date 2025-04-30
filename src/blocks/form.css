@@ -52,6 +52,11 @@
   border-bottom: 1px solid red;
 }
 
+.form__input-container {
+  width: 100%;
+  max-width: 360px;
+}
+
 .form__error {
   margin-left: 30px;
   color: red;

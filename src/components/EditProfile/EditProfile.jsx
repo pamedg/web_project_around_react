@@ -5,7 +5,7 @@ export default function EditProfile() {
 
   return (
     <>
-      <div>
+      <div className="form__input-container">
         <input
           className="form__input"
           type="text"
@@ -18,7 +18,7 @@ export default function EditProfile() {
         />
         <span className="input-error input-name-error form__error"></span>
       </div>
-      <div>
+      <div className="form__input-container">
         <input
           className="form__input"
           type="text"

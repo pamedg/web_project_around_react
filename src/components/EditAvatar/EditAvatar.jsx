@@ -9,7 +9,7 @@ export default function EditAvatar() {
           id="close-profile-form-add"
         />
         <h2 className="form__title"></h2>
-        <div>
+        <div className="form__input-container">
           <input
             className="form__input"
             type="url"

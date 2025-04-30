@@ -13,7 +13,7 @@
   margin: auto;
 }
 .popup__form {
-  width: 430px;
+  max-width: 430px;
   background-color: #fff;
   height: 272px;
   margin: auto;
@@ -47,6 +47,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  max-width: 360px;
+  width: 100%;
+}
+
+.popup__container_image {
+  background-color: transparent;
 }
 
 .popup__image {
