@@ -1,7 +1,4 @@
-import { Children } from "react";
 export default function NewCard() {
-  const newCardPopup = { title: "New Place", children: <NewCard /> };
-
   return (
     <>
       <div className="form__input-container">
