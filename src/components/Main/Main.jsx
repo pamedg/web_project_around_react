@@ -9,45 +9,21 @@ import EditAvatar from "../EditAvatar/EditAvatar.jsx";
 import NewCard from "../NewCard/NewCard.jsx";
 import Card from "./Card/Card.jsx";
 import ImagePopup from "../ImagePopup/imagePopup.jsx";
-import api from "../utils/api.js";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-export default function Card ({ likes,link, name, onCardClick, card}) {
-  const currentUser = useContext(CurrentUserContext);
-  function handleClickCard() {
-    onCardClick({ children: <ImagePopup link={link} name={name} /> });
-  }
-}
-
-
-const [cards, setCards] = useState([]);
-const user = useContext(CurrentUserContext);
-
-useEffect(() => {
-  async function getCards() {
-    const response = await api.getInitialCards();
-    setCards(response);
-  }
-  getCards();
-}, []);
-
-console.log(cards);
-
-async function handleCardLike(cards) {
-  const isLiked = cards.isliked;
-  try {
-    const newCard = await api.changeLikeCardStatus(cards._id, !isLiked);
-    setCards((state) =>
-      state.map((currentCard) =>
-        currentCard._id === cards._id ? newCard : currentCard
-      )
-    );
-  } catch (error) {
-    console.error(error);
-  }
-}
+import api from "../../utils/api.js";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
 export default function Main() {
   const [popup, setPopup] = useState(null);
+  const [cards, setCards] = useState([]);
+  const user = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    async function getCards() {
+      const response = await api.getInitialCards();
+      setCards(response);
+    }
+    getCards();
+  }, []);
 
   const newCardPopup = {
     title: "Nuevo lugar",
@@ -69,6 +45,20 @@ export default function Main() {
 
   function handleClosePopup() {
     setPopup(null);
+  }
+
+  async function handleCardLike(cards) {
+    const isLiked = cards.isliked;
+    try {
+      const newCard = await api.changeLikeCardStatus(cards._id, !isLiked);
+      setCards((state) =>
+        state.map((currentCard) =>
+          currentCard._id === cards._id ? newCard : currentCard
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (

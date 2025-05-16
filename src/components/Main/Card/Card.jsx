@@ -5,19 +5,21 @@ export default function Card(props) {
   }
 
   const { onCardClick } = props;
-  const { name, link, isliked } = props.card;
+  const { name, link, isLiked } = props.card;
 
   const imagePopup = {
     children: <ImagePopup link={link} name={name} />,
   };
 
   const cardLikeButtonClassName = `card__bottom-like ${
-    isliked ? "card__bottom-like_active" : ""
+    isLiked ? "card__bottom-like_active" : ""
   }`;
 
   function handleClickCard() {
-    onCardClick(imagePopup);
+    onCardClick({ children: <ImagePopup link={link} name={name} /> });
+    /*onCardClick(imagePopup);*/
   }
+
   return (
     <>
       <div className="card">
@@ -30,7 +32,7 @@ export default function Card(props) {
         <div alt="boton de eliminar" className="card__bottom-trash"></div>
         <div className="card__description">
           <h3 className="card__footer">{name}</h3>
-          <div alt="boton de like" className="card__bottom-like"></div>
+          <div alt="boton de like" className={cardLikeButtonClassName}></div>
         </div>
       </div>
     </>

@@ -9,6 +9,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [currentUser, setCurrentUser] = useState();
 
   return (
     <>
