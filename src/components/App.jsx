@@ -5,6 +5,7 @@ import Footer from "./Footer/Footer.jsx";
 import Card from "./Main/Card/Card.jsx";
 import EditAvatar from "./EditAvatar/EditAvatar.jsx";
 import EditProfile from "./EditProfile/EditProfile.jsx";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,9 +13,11 @@ function App() {
   return (
     <>
       <div className="page">
-        <Header />
-        <Main />
-        <Footer />
+        <CurrentUserContext.Provider value={currentUser}>
+          <Header />
+          <Main />
+          <Footer />
+        </CurrentUserContext.Provider>
 
         {/*<div className="popup" id="popup-image">
           <div className="popup__container">

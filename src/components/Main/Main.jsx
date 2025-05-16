@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import avatar from "../../images/avatar.png";
 import pencil from "../../images/Pencil.svg";
 import editButton from "../../images/EditButton.svg";
@@ -9,27 +9,42 @@ import EditAvatar from "../EditAvatar/EditAvatar.jsx";
 import NewCard from "../NewCard/NewCard.jsx";
 import Card from "./Card/Card.jsx";
 import ImagePopup from "../ImagePopup/imagePopup.jsx";
+import api from "../utils/api.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+export default function Card ({ likes,link, name, onCardClick, card}) {
+  const currentUser = useContext(CurrentUserContext);
+  function handleClickCard() {
+    onCardClick({ children: <ImagePopup link={link} name={name} /> });
+  }
+}
 
-const cards = [
-  {
-    isLiked: false,
-    _id: "5d1f0611d321eb4bdcd707dd",
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:10:57.741Z",
-  },
-  {
-    isLiked: false,
-    _id: "5d1f064ed321eb4bdcd707de",
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-    owner: "5d1f0611d321eb4bdcd707dd",
-    createdAt: "2019-07-05T08:11:58.324Z",
-  },
-];
+
+const [cards, setCards] = useState([]);
+const user = useContext(CurrentUserContext);
+
+useEffect(() => {
+  async function getCards() {
+    const response = await api.getInitialCards();
+    setCards(response);
+  }
+  getCards();
+}, []);
 
 console.log(cards);
+
+async function handleCardLike(cards) {
+  const isLiked = cards.isliked;
+  try {
+    const newCard = await api.changeLikeCardStatus(cards._id, !isLiked);
+    setCards((state) =>
+      state.map((currentCard) =>
+        currentCard._id === cards._id ? newCard : currentCard
+      )
+    );
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export default function Main() {
   const [popup, setPopup] = useState(null);

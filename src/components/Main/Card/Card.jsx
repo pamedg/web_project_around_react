@@ -11,6 +11,10 @@ export default function Card(props) {
     children: <ImagePopup link={link} name={name} />,
   };
 
+  const cardLikeButtonClassName = `card__bottom-like ${
+    isliked ? "card__bottom-like_active" : ""
+  }`;
+
   function handleClickCard() {
     onCardClick(imagePopup);
   }
