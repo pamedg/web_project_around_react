@@ -47,8 +47,18 @@ export default function Main() {
     setPopup(null);
   }
 
-  async function handleCardLike(cards) {
-    const isLiked = cards.isliked;
+  async function handleCardLike(card) {
+    const isLiked = card.isLiked;
+    await api
+      .changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        );
+      })
+      .catch((error) => console.log(error));
     try {
       const newCard = await api.changeLikeCardStatus(cards._id, !isLiked);
       setCards((state) =>
@@ -57,9 +67,11 @@ export default function Main() {
         )
       );
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
+
+  handleCardDelete(card);
 
   return (
     <>
