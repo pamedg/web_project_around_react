@@ -21,9 +21,22 @@ export default function Card(props) {
 
   const cardDeleteButtonClassName = `${isOwn ? "card__bottom-trash" : ""}`;
 
+  function handleCardLike() {
+    onCardClick({ children: <ImagePopup link={link} name={name} /> });
+  }
+
+  function handleLikeClick() {
+    onCardClick({ children: <ImagePopup link={link} name={name} /> });
+  }
+
   function handleClickCard() {
     onCardClick({ children: <ImagePopup link={link} name={name} /> });
     /*onCardClick(imagePopup);*/
+  }
+
+  function handleCardDelete() {
+    onCardDelete({ children: <ImagePopup link={link} name={name} /> });
+    handleDeleteClick();
   }
 }
 
