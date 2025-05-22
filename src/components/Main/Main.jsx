@@ -108,7 +108,12 @@ export default function Main() {
       </section>
       <section className="card-grid">
         {cards.map((card) => (
-          <Card key={card._id} card={card} onCardClick={handleOpenPopup} />
+          <Card
+            key={card._id}
+            card={card}
+            onCardClick={handleOpenPopup}
+            onCardLike={handleCardLike}
+          />
         ))}
       </section>
       {popup && (
