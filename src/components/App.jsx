@@ -18,8 +18,8 @@ function App() {
           value={{
             currentUser,
             avatar: currentUser?.avatar,
-            name: currentUser.name,
-            about: currentUser.about,
+            name: currentUser?.name,
+            about: currentUser?.about,
           }}
         >
           <Header />
