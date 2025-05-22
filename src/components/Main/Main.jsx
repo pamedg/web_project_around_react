@@ -10,7 +10,7 @@ import NewCard from "../NewCard/NewCard.jsx";
 import Card from "./Card/Card.jsx";
 import ImagePopup from "../ImagePopup/imagePopup.jsx";
 import { api } from "../../utils/api.js";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
+// import { CurrentUserContext } from "../../../contexts/CurrentUserContext.jsx";
 
 export default function Main() {
   const [popup, setPopup] = useState(null);

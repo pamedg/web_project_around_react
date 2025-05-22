@@ -1,7 +1,7 @@
-import { useContext } from "react";
-import { CurrentUserContext } from "../../../ contexts/CurrentUserContext";
+import { useContext, useState } from "react";
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 import ImagePopup from "../../ImagePopup/imagePopup";
-// import ImagePopup from "../../ImagePopup/imagePopup";
+
 export default function Card(props) {
   if (!props.card) {
     return null;
@@ -10,6 +10,7 @@ export default function Card(props) {
   const [isLiked, setIsLiked] = useState(props.isLiked);
   const { onCardClick, onCardLike, onCardDelete } = props;
   const { name, link } = props.card;
+  const isOwn = props.card.owner._id === currentUser._id;
 
   const imagePopup = {
     children: <ImagePopup link={link} name={name} />,
