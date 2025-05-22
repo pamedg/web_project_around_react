@@ -10,7 +10,7 @@ export default function Card(props) {
   const [isLiked, setIsLiked] = useState(props.isLiked);
   const { onCardClick, onCardLike, onCardDelete } = props;
   const { name, link } = props.card;
-  const isOwn = props.card.owner._id === currentUser._id;
+  const isOwn = props.card.owner === currentUser;
 
   const imagePopup = {
     children: <ImagePopup link={link} name={name} />,

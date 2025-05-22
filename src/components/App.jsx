@@ -14,7 +14,14 @@ function App() {
   return (
     <>
       <div className="page">
-        <CurrentUserContext.Provider value={currentUser}>
+        <CurrentUserContext.Provider
+          value={{
+            currentUser,
+            avatar: currentUser?.avatar,
+            name: currentUser.name,
+            about: currentUser.about,
+          }}
+        >
           <Header />
           <Main />
           <Footer />
