@@ -10,7 +10,7 @@ import NewCard from "../NewCard/NewCard.jsx";
 import Card from "./Card/Card.jsx";
 import ImagePopup from "../ImagePopup/imagePopup.jsx";
 import { api } from "../../utils/api.js";
-// import { CurrentUserContext } from "../../../contexts/CurrentUserContext.jsx";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
 export default function Main() {
   const [popup, setPopup] = useState(null);
@@ -71,7 +71,20 @@ export default function Main() {
     }
   }
 
-  handleCardDelete(card);
+  async function handleCardDelete(card) {
+    await api
+      .deleteCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((c) => c._id !== card._id));
+      })
+      .catch((error) => console.log(error));
+    try {
+      await api.deleteCard(cards._id);
+      setCards((state) => state.filter((c) => c._id !== cards._id));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
