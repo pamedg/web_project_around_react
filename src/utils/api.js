@@ -4,7 +4,7 @@ class Api {
     this._headers = options.headers;
     // cuerpo del constructor
   }
-  getUserInformation(body) {
+  getUserInformation() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
@@ -87,6 +87,14 @@ class Api {
       }
       return Promise.reject(`Error: ${res.status}`);
     });
+  }
+
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.Dislike(cardId);
+    } else {
+      this.Likes(cardId);
+    }
   }
 
   Dislike(cardId) {

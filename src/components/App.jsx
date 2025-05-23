@@ -1,27 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
-import Card from "./Main/Card/Card.jsx";
-import EditAvatar from "./EditAvatar/EditAvatar.jsx";
-import EditProfile from "./EditProfile/EditProfile.jsx";
+import { api } from "../utils/api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    async function getUser() {
+      const response = await api.getUserInformation();
+      setCurrentUser(response);
+    }
+    getUser();
+  }, []);
 
   return (
     <>
       <div className="page">
-        <CurrentUserContext.Provider
-          value={{
-            currentUser,
-            avatar: currentUser?.avatar,
-            name: currentUser?.name,
-            about: currentUser?.about,
-          }}
-        >
+        <CurrentUserContext.Provider value={currentUser}>
           <Header />
           <Main />
           <Footer />

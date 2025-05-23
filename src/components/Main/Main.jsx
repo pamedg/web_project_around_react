@@ -48,14 +48,12 @@ export default function Main() {
   }
 
   async function handleCardLike(card) {
-    const isLiked = card.isLiked;
-    await api
+    const isLiked = card.isLiked.some((i) => i._id === CurrentUserContext._id);
+    api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) =>
-          state.map((currentCard) =>
-            currentCard._id === card._id ? newCard : currentCard
-          )
+          state.map((c) => (c._id === card._id ? newCard : c))
         );
       })
       .catch((error) => console.log(error));
@@ -73,13 +71,13 @@ export default function Main() {
 
   async function handleCardDelete(card) {
     await api
-      .deleteCard(card._id)
+      .DeleteCard(card._id)
       .then(() => {
         setCards((state) => state.filter((c) => c._id !== card._id));
       })
       .catch((error) => console.log(error));
     try {
-      await api.deleteCard(cards._id);
+      await api.DeleteCard(cards._id);
       setCards((state) => state.filter((c) => c._id !== cards._id));
     } catch (error) {
       console.log(error);
