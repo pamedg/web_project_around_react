@@ -125,6 +125,7 @@ export default function Main() {
             onCardClick={handleOpenPopup}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
+            setCards={setCards}
           />
         ))}
       </section>

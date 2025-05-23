@@ -93,7 +93,7 @@ class Api {
     if (isLiked) {
       return this.Dislike(cardId);
     } else {
-      this.Likes(cardId);
+      return this.Likes(cardId);
     }
   }
 

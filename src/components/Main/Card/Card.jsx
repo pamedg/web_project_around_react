@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 import ImagePopup from "../../ImagePopup/imagePopup";
+import { api } from "../../../utils/api.js";
 
 export default function Card(props) {
   if (!props.card) {
@@ -8,38 +9,29 @@ export default function Card(props) {
   }
 
   const currentUser = useContext(CurrentUserContext);
-  const [isLiked, setIsLiked] = useState(props.card.isLiked);
+
   const { onCardClick, onCardLike, onCardDelete } = props;
-  const { name, link } = props.card;
+  const { name, link, isLiked } = props.card;
   const isOwn = props.card.owner === currentUser._id;
 
   const imagePopup = {
     children: <ImagePopup link={link} name={name} />,
   };
+  const cardDeleteButtonClassName = `${isOwn ? "card__bottom-trash" : ""}`;
 
   const cardLikeButtonClassName = `card__bottom-like ${
     isLiked && "card__bottom-like_active"
   }`;
-
-  // const isLiked = card.likes.some((i) => i._id === currentUser._id);
-
-  const cardDeleteButtonClassName = `${isOwn ? "card__bottom-trash" : ""}`;
+  console.log(isLiked);
 
   async function handleCardLike(card) {
-    const isLiked = card.isLiked.some((i) => i._id === CurrentUserContext._id);
-    api
-      .changeLikeCardStatus(card._id, !isLiked)
-      .then((newCard) => {
-        setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
-        );
-      })
-      .catch((error) => console.log(error));
+    const isLiked = props.card.isLiked;
+
     try {
-      const newCard = await api.changeLikeCardStatus(cards._id, !isLiked);
-      setCards((state) =>
+      const newCard = await api.changeLikeCardStatus(props.card._id, isLiked);
+      props.setCards((state) =>
         state.map((currentCard) =>
-          currentCard._id === cards._id ? newCard : currentCard
+          currentCard._id === props.card._id ? newCard : currentCard
         )
       );
     } catch (error) {
@@ -47,7 +39,9 @@ export default function Card(props) {
     }
   }
 
-  function handleLikeClick() {}
+  function handleLike() {
+    onCardLike(props.card._id);
+  }
 
   function handleClickCard() {
     onCardClick({ children: <ImagePopup link={link} name={name} /> });
@@ -79,7 +73,7 @@ export default function Card(props) {
             className={
               isLiked ? "card__bottom-like_active" : "card__bottom-like"
             }
-            onClick={handleCardLike}
+            onClick={handleLike}
           ></div>
         </div>
       </div>
