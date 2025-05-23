@@ -25,6 +25,28 @@ export default function Card(props) {
 
   const cardDeleteButtonClassName = `${isOwn ? "card__bottom-trash" : ""}`;
 
+  async function handleCardLike(card) {
+    const isLiked = card.isLiked.some((i) => i._id === CurrentUserContext._id);
+    api
+      .changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((c) => (c._id === card._id ? newCard : c))
+        );
+      })
+      .catch((error) => console.log(error));
+    try {
+      const newCard = await api.changeLikeCardStatus(cards._id, !isLiked);
+      setCards((state) =>
+        state.map((currentCard) =>
+          currentCard._id === cards._id ? newCard : currentCard
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   function handleLikeClick() {}
 
   function handleClickCard() {

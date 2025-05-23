@@ -47,9 +47,24 @@ export default function Main() {
     setPopup(null);
   }
 
+  async function handleCardDelete(card) {
+    await api
+      .DeleteCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((c) => c._id !== card._id));
+      })
+      .catch((error) => console.log(error));
+    try {
+      await api.DeleteCard(cards._id);
+      setCards((state) => state.filter((c) => c._id !== cards._id));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async function handleCardLike(card) {
-    const isLiked = card.isLiked.some((i) => i._id === CurrentUserContext._id);
-    api
+    const isLiked = card.likes.some((i) => i._id === user._id);
+    await api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) =>
@@ -64,21 +79,6 @@ export default function Main() {
           currentCard._id === cards._id ? newCard : currentCard
         )
       );
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function handleCardDelete(card) {
-    await api
-      .DeleteCard(card._id)
-      .then(() => {
-        setCards((state) => state.filter((c) => c._id !== card._id));
-      })
-      .catch((error) => console.log(error));
-    try {
-      await api.DeleteCard(cards._id);
-      setCards((state) => state.filter((c) => c._id !== cards._id));
     } catch (error) {
       console.log(error);
     }
@@ -124,6 +124,7 @@ export default function Main() {
             card={card}
             onCardClick={handleOpenPopup}
             onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
         ))}
       </section>
