@@ -52,6 +52,9 @@ export default function Card(props) {
     onCardDelete({ children: <ImagePopup link={link} name={name} /> });
     handleDeleteClick();
   }
+  function handleDeleteClick() {
+    onCardDelete(props.card);
+  }
 
   return (
     <>
@@ -65,14 +68,13 @@ export default function Card(props) {
         <div
           alt="boton de eliminar"
           className={cardDeleteButtonClassName}
+          onClick={handleCardDelete}
         ></div>
         <div className="card__description">
           <h3 className="card__footer">{name}</h3>
           <div
             alt="boton de like"
-            className={
-              isLiked ? "card__bottom-like_active" : "card__bottom-like"
-            }
+            className={cardLikeButtonClassName}
             onClick={handleLike}
           ></div>
         </div>

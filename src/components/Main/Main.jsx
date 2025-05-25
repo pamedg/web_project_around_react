@@ -54,26 +54,11 @@ export default function Main() {
         setCards((state) => state.filter((c) => c._id !== card._id));
       })
       .catch((error) => console.log(error));
-    try {
-      await api.DeleteCard(cards._id);
-      setCards((state) => state.filter((c) => c._id !== cards._id));
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   async function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === user._id);
-    await api
-      .changeLikeCardStatus(card._id, !isLiked)
-      .then((newCard) => {
-        setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
-        );
-      })
-      .catch((error) => console.log(error));
     try {
-      const newCard = await api.changeLikeCardStatus(cards._id, !isLiked);
+      const newCard = await api.changeLikeCardStatus(cards._id, card.isLiked);
       setCards((state) =>
         state.map((currentCard) =>
           currentCard._id === cards._id ? newCard : currentCard
