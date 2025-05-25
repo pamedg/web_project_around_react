@@ -7,6 +7,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext.jsx";
 
 function App() {
   const [currentUser, setCurrentUser] = useState();
+  // const { currentUser } = useContext(CurrentUserContext);
 
   useEffect(() => {
     async function getUser() {
@@ -15,6 +16,14 @@ function App() {
     }
     getUser();
   }, []);
+
+  const handleUpdateUser = (user) => {
+    (async () => {
+      await api.setUserInfo(user).then((res) => {
+        setCurrentUser(res);
+      });
+    })();
+  };
 
   return (
     <>

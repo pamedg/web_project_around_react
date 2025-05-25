@@ -8,7 +8,7 @@ export default function Card(props) {
     return null;
   }
 
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const { onCardClick, onCardLike, onCardDelete } = props;
   const { name, link, isLiked } = props.card;

@@ -1,7 +1,27 @@
-import { Children } from "react";
-export default function EditProfile() {
-  /* const [popup, setPopup] = useState(null);
-  const newCardPopup = { title: "Nuevo lugar", children: <NewCard /> }; */
+import { useState, useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
+
+export default function EditProfile(name, description) {
+  const CurrentUserContext = useContext(CurrentUserContext);
+  const { currentUser, handleUpdateUser } = useContext;
+
+  const [name, setName] = useState(currentUser.name);
+  const [description, setDescription] = useState(currentUser.about);
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleUpdateUser({
+      name,
+      about: description,
+    });
+  };
 
   return (
     <>
@@ -15,6 +35,8 @@ export default function EditProfile() {
           maxLength="40"
           name="name"
           placeholder="Nombre"
+          value={name}
+          onChange={handleNameChange}
         />
         <span className="input-error input-name-error form__error"></span>
       </div>
@@ -28,6 +50,8 @@ export default function EditProfile() {
           maxLength="200"
           name="job"
           placeholder=" Acerca de mí"
+          value={description}
+          onChange={handleDescriptionChange}
         />
         <span className="input-error input-about-error form__error"></span>
       </div>
