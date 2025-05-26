@@ -15,7 +15,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 export default function Main() {
   const [popup, setPopup] = useState(null);
   const [cards, setCards] = useState([]);
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   useEffect(() => {
     async function getCards() {
