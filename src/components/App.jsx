@@ -5,6 +5,7 @@ import Footer from "./Footer/Footer.jsx";
 import { api } from "../utils/api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.jsx";
 import EditProfile from "./EditProfile/EditProfile.jsx";
+import EditAvatar from "./EditAvatar/EditAvatar.jsx";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -19,8 +20,28 @@ function App() {
   }, []);
 
   function handleUpdateUser(userData) {
-    api.getUserInformation(userData).then((newUser) => {
+    (async () => {
+      await api
+        .getUserInformation(userData)
+        .then((newUser) => {
+          setCurrentUser(newUser);
+          handleClosePopup();
+        })
+        .catch((error) => console.error(error));
+    })();
+  }
+
+  function handleUpdateAvatar(link) {
+    api.setUserAvatar(link).then((newUser) => {
       setCurrentUser(newUser);
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    onUpdateAvatar({
+      avatar,
     });
   }
 
@@ -31,6 +52,16 @@ function App() {
           <Header />
           <Main />
           <Footer />
+          <EditProfile
+            isOpen={EditProfile}
+            onClose={handleClosePopup}
+            onUpdateUser={handleUpdateUser}
+          />
+          <EditAvatar
+            isOpen={EditAvatar}
+            onClose={handleClosePopup}
+            onEditAvatar={handleUpdateAvatar}
+          />
         </CurrentUserContext.Provider>
 
         {/*<div className="popup" id="popup-image">
