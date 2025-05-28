@@ -15,7 +15,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 export default function Main() {
   const [popup, setPopup] = useState(null);
   const [cards, setCards] = useState([]);
-  const { currentUser } = useContext(CurrentUserContext);
 
   useEffect(() => {
     async function getCards() {
@@ -24,6 +23,8 @@ export default function Main() {
     }
     getCards();
   }, []);
+
+  const { currentUser } = useContext(CurrentUserContext);
 
   const newCardPopup = {
     title: "Nuevo lugar",

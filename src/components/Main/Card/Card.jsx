@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
+
 import ImagePopup from "../../ImagePopup/imagePopup";
 import { api } from "../../../utils/api.js";
 
@@ -40,7 +41,7 @@ export default function Card(props) {
   }
 
   function handleLike() {
-    onCardLike(props.card._id);
+    onCardLike(props.card);
   }
 
   function handleClickCard() {

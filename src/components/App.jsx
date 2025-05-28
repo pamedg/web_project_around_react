@@ -37,12 +37,11 @@ function App() {
     });
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    onUpdateAvatar({
-      avatar,
-    });
+  function handleClosePopup() {
+    const popup = document.querySelector(".popup_opened");
+    if (popup) {
+      popup.classList.remove("popup_opened");
+    }
   }
 
   return (
@@ -52,16 +51,16 @@ function App() {
           <Header />
           <Main />
           <Footer />
-          <EditProfile
+          {/* <EditProfile
             isOpen={EditProfile}
             onClose={handleClosePopup}
             onUpdateUser={handleUpdateUser}
-          />
-          <EditAvatar
+          /> */}
+          {/* <EditAvatar
             isOpen={EditAvatar}
             onClose={handleClosePopup}
             onEditAvatar={handleUpdateAvatar}
-          />
+          /> */}
         </CurrentUserContext.Provider>
 
         {/*<div className="popup" id="popup-image">
