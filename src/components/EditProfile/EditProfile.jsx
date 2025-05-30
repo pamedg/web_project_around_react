@@ -31,8 +31,7 @@ export default function EditProfile() {
 
   return (
     <>
-      <form>
-        {/* onSubmit={handleSubmit} */}
+      <form onSubmit={handleSubmit}>
         {/* onClose={userContext.handleClosePopup} */}
         {/* isOpen={isOpen} */}
         <div className="form__input-container">

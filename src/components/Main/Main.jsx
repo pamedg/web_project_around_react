@@ -59,10 +59,10 @@ export default function Main() {
 
   async function handleCardLike(card) {
     try {
-      const newCard = await api.changeLikeCardStatus(cards._id, card.isLiked);
+      const newCard = await api.changeLikeCardStatus(card._id, card.isLiked);
       setCards((state) =>
         state.map((currentCard) =>
-          currentCard._id === cards._id ? newCard : currentCard
+          currentCard._id === card._id ? newCard : currentCard
         )
       );
     } catch (error) {

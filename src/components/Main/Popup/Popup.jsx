@@ -3,10 +3,7 @@ export default function Popup(props) {
   const { onClose, title, children } = props;
 
   return (
-    <form>
-      {/* isOpen={props.isOpen} */}
-      {/* onClose={onClose} */}
-      {/* onSubmit={props.onSubmit} */}
+    <>
       <div className="popup" id="popup-profile">
         <div
           className={`popup__container ${
@@ -28,6 +25,6 @@ export default function Popup(props) {
           {/*</form>*/}
         </div>
       </div>
-    </form>
+    </>
   );
 }

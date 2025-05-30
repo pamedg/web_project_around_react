@@ -22,7 +22,7 @@ function App() {
   function handleUpdateUser(userData) {
     (async () => {
       await api
-        .getUserInformation(userData)
+        .updateUserInformation(userData)
         .then((newUser) => {
           setCurrentUser(newUser);
           handleClosePopup();

@@ -9,10 +9,7 @@ export default function EditAvatar() {
   }
   return (
     <>
-      <form>
-        {/* isOpen={isOpen} */}
-        {/* onClose={onClose} */}
-        {/* onSubmit={handleSubmit} */}
+      <form onSubmit={handleSubmit}>
         {/* ref={createRef} */}
         <div className="popup__container">
           <img
