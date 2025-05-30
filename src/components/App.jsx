@@ -10,6 +10,7 @@ import EditAvatar from "./EditAvatar/EditAvatar.jsx";
 function App() {
   const [currentUser, setCurrentUser] = useState({});
   // const { currentUser } = useContext(CurrentUserContext);
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     async function getUser() {
@@ -37,6 +38,28 @@ function App() {
     });
   }
 
+  async function handleCardDelete(card) {
+    await api
+      .DeleteCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((c) => c._id !== card._id));
+      })
+      .catch((error) => console.log(error));
+  }
+
+  async function handleCardLike(card) {
+    try {
+      const newCard = await api.changeLikeCardStatus(card._id, card.isLiked);
+      setCards((state) =>
+        state.map((currentCard) =>
+          currentCard._id === card._id ? newCard : currentCard
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   function handleClosePopup() {
     const popup = document.querySelector(".popup_opened");
     if (popup) {
@@ -44,12 +67,20 @@ function App() {
     }
   }
 
+  function handleAddPlaceSubmit(data) {
+    api.addCard(data).then((card) => {});
+  }
+
   return (
     <>
       <div className="page">
         <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser }}>
           <Header />
-          <Main />
+          <Main
+            cards={cards}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
+          />
           <Footer />
           {/* <EditProfile
             isOpen={EditProfile}
@@ -61,6 +92,7 @@ function App() {
             onClose={handleClosePopup}
             onEditAvatar={handleUpdateAvatar}
           /> */}
+          {/* <NewCard onAddCard={handleAddCard} /> */}
         </CurrentUserContext.Provider>
 
         {/*<div className="popup" id="popup-image">

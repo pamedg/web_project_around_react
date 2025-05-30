@@ -1,4 +1,14 @@
-export default function NewCard() {
+export default function NewCard({ onAddCard }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const link = form.link.value;
+
+    onAddCard({ title, link });
+    form.reset();
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit}>

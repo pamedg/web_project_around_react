@@ -12,7 +12,7 @@ import ImagePopup from "../ImagePopup/imagePopup.jsx";
 import { api } from "../../utils/api.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
-export default function Main() {
+export default function Main(props) {
   const [popup, setPopup] = useState(null);
   const [cards, setCards] = useState([]);
 
@@ -46,28 +46,6 @@ export default function Main() {
 
   function handleClosePopup() {
     setPopup(null);
-  }
-
-  async function handleCardDelete(card) {
-    await api
-      .DeleteCard(card._id)
-      .then(() => {
-        setCards((state) => state.filter((c) => c._id !== card._id));
-      })
-      .catch((error) => console.log(error));
-  }
-
-  async function handleCardLike(card) {
-    try {
-      const newCard = await api.changeLikeCardStatus(card._id, card.isLiked);
-      setCards((state) =>
-        state.map((currentCard) =>
-          currentCard._id === card._id ? newCard : currentCard
-        )
-      );
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   return (
@@ -104,13 +82,13 @@ export default function Main() {
         />
       </section>
       <section className="card-grid">
-        {cards.map((card) => (
+        {props.cards.map((card) => (
           <Card
             key={card._id}
             card={card}
             onCardClick={handleOpenPopup}
-            onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
+            onCardLike={props.onCardLike}
+            onCardDelete={props.onCardDelete}
             setCards={setCards}
           />
         ))}
