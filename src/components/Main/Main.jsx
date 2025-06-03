@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import avatar from "../../images/avatar.png";
+
 import pencil from "../../images/Pencil.svg";
 import editButton from "../../images/EditButton.svg";
 import addButton from "../../images/AddButton.svg";
@@ -9,26 +9,17 @@ import EditAvatar from "../EditAvatar/EditAvatar.jsx";
 import NewCard from "../NewCard/NewCard.jsx";
 import Card from "./Card/Card.jsx";
 import ImagePopup from "../ImagePopup/imagePopup.jsx";
-import { api } from "../../utils/api.js";
+i;
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
 
 export default function Main(props) {
   const [popup, setPopup] = useState(null);
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    async function getCards() {
-      const response = await api.getInitialCards();
-      setCards(response);
-    }
-    getCards();
-  }, []);
 
   const { currentUser } = useContext(CurrentUserContext);
 
   const newCardPopup = {
     title: "Nuevo lugar",
-    children: <NewCard />,
+    children: <NewCard onAddCard={props.onAddCard} />,
   };
 
   const editProfilePopup = {
@@ -52,7 +43,11 @@ export default function Main(props) {
     <>
       <section className="profile">
         <div className="profile__edit">
-          <img src={avatar} alt="imagen avantar" className="profile__avatar" />
+          <img
+            src={currentUser.avatar}
+            alt="imagen avantar"
+            className="profile__avatar"
+          />
           <img
             className="profile__edit-pencil"
             src={pencil}
@@ -62,7 +57,7 @@ export default function Main(props) {
         </div>
         <div className="profile__user">
           <div className="profile__info">
-            <h1 className="profile__name">Lara </h1>
+            <h1 className="profile__name">{currentUser.name} </h1>
             <img
               src={editButton}
               alt="boton para editar"
@@ -70,7 +65,7 @@ export default function Main(props) {
               onClick={() => handleOpenPopup(editProfilePopup)}
             />
           </div>
-          <p className="profile__occupation">Bailarina</p>
+          <p className="profile__occupation">{currentUser.about}</p>
         </div>
         <img
           src={addButton}

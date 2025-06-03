@@ -20,6 +20,14 @@ function App() {
     getUser();
   }, []);
 
+  useEffect(() => {
+    async function getCards() {
+      const response = await api.getInitialCards();
+      setCards(response);
+    }
+    getCards();
+  }, []);
+
   function handleUpdateUser(userData) {
     (async () => {
       await api
@@ -68,7 +76,9 @@ function App() {
   }
 
   function handleAddPlaceSubmit(data) {
-    api.addCard(data).then((card) => {});
+    api.addCard(data).then((card) => {
+      setCards([card, ...cards]);
+    });
   }
 
   return (
@@ -80,6 +90,7 @@ function App() {
             cards={cards}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
+            onAddCard={handleAddPlaceSubmit}
           />
           <Footer />
           {/* <EditProfile
