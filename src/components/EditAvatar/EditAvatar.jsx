@@ -7,6 +7,7 @@ export default function EditAvatar() {
 
     onUpdateAvatar(inputRef.current.value);
   }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
