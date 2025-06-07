@@ -1,12 +1,13 @@
 import React, { createRef } from "react";
 import Popup from "../Main/Popup/Popup";
-export default function EditAvatar() {
+export default function EditAvatar({ onUpdateAvatar }) {
   const inputRef = createRef();
-  onUpdateAvatar;
+
   function handleSubmit(e) {
     e.preventDefault();
-
-    onUpdateAvatar(inputRef.current.value);
+    if (inputRef.current && inputRef.current.value) {
+      onUpdateAvatar(inputRef.current.value);
+    }
   }
 
   return (

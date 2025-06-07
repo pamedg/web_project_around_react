@@ -32,11 +32,11 @@ export default function Main(props) {
 
   const editProfilePopup = {
     title: "Editar perfil",
-    children: <EditProfile />,
+    children: <EditProfile onClosePopup={handleClosePopup} />,
   };
   const editAvatarPopup = {
     title: "Editar avatar",
-    children: <EditAvatar />,
+    children: <EditAvatar onClosePopup={handleClosePopup} />,
   };
 
   return (
