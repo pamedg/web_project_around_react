@@ -2,6 +2,7 @@ import React, { createRef } from "react";
 import Popup from "../Main/Popup/Popup";
 export default function EditAvatar() {
   const inputRef = createRef();
+  onUpdateAvatar;
   function handleSubmit(e) {
     e.preventDefault();
 

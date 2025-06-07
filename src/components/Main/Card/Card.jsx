@@ -18,7 +18,6 @@ export default function Card(props) {
   const cardLikeButtonClassName = `card__bottom-like ${
     isLiked && "card__bottom-like_active"
   }`;
-  console.log(isLiked);
 
   function handleLike() {
     onCardLike(props.card);

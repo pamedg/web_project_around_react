@@ -17,6 +17,14 @@ export default function Main(props) {
 
   const { currentUser } = useContext(CurrentUserContext);
 
+  function handleOpenPopup(popup) {
+    setPopup(popup);
+  }
+
+  function handleClosePopup() {
+    setPopup(null);
+  }
+
   const newCardPopup = {
     title: "Nuevo lugar",
     children: <NewCard onAddCard={props.onAddCard} />,
@@ -30,14 +38,6 @@ export default function Main(props) {
     title: "Editar avatar",
     children: <EditAvatar />,
   };
-
-  function handleOpenPopup(popup) {
-    setPopup(popup);
-  }
-
-  function handleClosePopup() {
-    setPopup(null);
-  }
 
   return (
     <>
