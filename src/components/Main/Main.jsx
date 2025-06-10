@@ -27,7 +27,9 @@ export default function Main(props) {
 
   const newCardPopup = {
     title: "Nuevo lugar",
-    children: <NewCard onAddCard={props.onAddCard} />,
+    children: (
+      <NewCard onClosePopup={handleClosePopup} onAddCard={props.onAddCard} />
+    ),
   };
 
   const editProfilePopup = {

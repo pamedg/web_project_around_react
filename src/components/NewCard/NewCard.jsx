@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { createRef } from "react";
-export default function NewCard({ onAddCard }) {
+export default function NewCard({ onAddCard, onClosePopup }) {
   const titleRef = createRef();
   const imageLinkRef = createRef();
 
@@ -29,6 +29,7 @@ export default function NewCard({ onAddCard }) {
 
     setTitle(currentUser.title);
     setLink(currentUser.link);
+    onClosePopup();
   };
 
   return (

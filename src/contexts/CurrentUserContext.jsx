@@ -1,3 +1,7 @@
 import { createContext } from "react";
 
-export const CurrentUserContext = createContext();
+export const CurrentUserContext = React.createElement(
+  CurrentUserContext.Provider,
+  { value: {} },
+  children
+);

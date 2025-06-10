@@ -1,6 +1,6 @@
 import React, { createRef } from "react";
 import Popup from "../Main/Popup/Popup";
-export default function EditAvatar({ onUpdateAvatar }) {
+export default function EditAvatar({ onUpdateAvatar, onClosePopup }) {
   const inputRef = createRef();
 
   function handleSubmit(e) {
@@ -8,6 +8,7 @@ export default function EditAvatar({ onUpdateAvatar }) {
     if (inputRef.current && inputRef.current.value) {
       onUpdateAvatar(inputRef.current.value);
     }
+    onClosePopup();
   }
 
   return (
