@@ -73,7 +73,7 @@ class Api {
     });
   }
 
-  Likes(cardId) {
+  like(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: {
@@ -91,13 +91,13 @@ class Api {
 
   changeLikeCardStatus(cardId, isLiked) {
     if (isLiked) {
-      return this.Dislike(cardId);
+      return this.dislike(cardId);
     } else {
-      return this.Likes(cardId);
+      return this.like(cardId);
     }
   }
 
-  Dislike(cardId) {
+  dislike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: {
@@ -113,7 +113,7 @@ class Api {
     });
   }
 
-  Avatar(link) {
+  setUserAvatar(link) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {

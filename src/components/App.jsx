@@ -75,8 +75,8 @@ function App() {
     }
   }
 
-  function handleAddPlaceSubmit(name, link) {
-    api.createCard(name, link).then((card) => {
+  function handleAddPlaceSubmit(data) {
+    api.createCard(data.title, data.link).then((card) => {
       setCards([card, ...cards]);
     });
   }
@@ -91,6 +91,7 @@ function App() {
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
             onAddCard={handleAddPlaceSubmit}
+            onUpdateAvatar={handleUpdateAvatar}
           />
           <Footer />
           {/* <EditProfile

@@ -36,7 +36,12 @@ export default function Main(props) {
   };
   const editAvatarPopup = {
     title: "Editar avatar",
-    children: <EditAvatar onClosePopup={handleClosePopup} />,
+    children: (
+      <EditAvatar
+        onClosePopup={handleClosePopup}
+        onUpdateAvatar={props.onUpdateAvatar}
+      />
+    ),
   };
 
   return (

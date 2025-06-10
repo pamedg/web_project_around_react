@@ -1,6 +1,10 @@
 import { useState, useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { createRef } from "react";
 export default function NewCard({ onAddCard }) {
+  const titleRef = createRef();
+  const imageLinkRef = createRef();
+
   const currentUser = useContext(CurrentUserContext);
 
   const [title, setTitle] = useState(currentUser.title);
@@ -16,12 +20,12 @@ export default function NewCard({ onAddCard }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const title = form.title.value;
-    const link = form.link.value;
+    const title = titleRef.current.value;
+    const link = imageLinkRef.current.value;
 
     onAddCard({ title, link });
-    form.reset();
+    titleRef.current.value = "";
+    imageLinkRef.current.value = "";
 
     setTitle(currentUser.title);
     setLink(currentUser.link);
@@ -40,6 +44,7 @@ export default function NewCard({ onAddCard }) {
             maxLength="40"
             name="title"
             placeholder="Titulo"
+            ref={titleRef}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -55,6 +60,7 @@ export default function NewCard({ onAddCard }) {
             maxLength="200"
             name="link"
             placeholder=" URL de la imagen"
+            ref={imageLinkRef}
             value={link}
             onChange={(e) => setLink(e.target.value)}
           />

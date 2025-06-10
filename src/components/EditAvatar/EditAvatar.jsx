@@ -29,6 +29,7 @@ export default function EditAvatar({ onUpdateAvatar }) {
               id="input-avatar"
               required
               minLength="2"
+              ref={inputRef}
               maxLength="200"
               name="link"
               placeholder="Nueva Foto de Perfil"

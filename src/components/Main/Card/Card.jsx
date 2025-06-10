@@ -29,9 +29,9 @@ export default function Card(props) {
   }
 
   function handleCardDelete() {
-    onCardDelete({ children: <ImagePopup link={link} name={name} /> });
     handleDeleteClick();
   }
+
   function handleDeleteClick() {
     onCardDelete(props.card);
   }
