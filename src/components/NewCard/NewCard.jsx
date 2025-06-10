@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import { createRef } from "react";
 export default function NewCard({ onAddCard, onClosePopup }) {
   const titleRef = createRef();

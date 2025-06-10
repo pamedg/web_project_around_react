@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext.jsx";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 
 export default function EditProfile({ onClosePopup }) {
   const userContext = useContext(CurrentUserContext);

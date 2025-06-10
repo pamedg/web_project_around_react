@@ -3,7 +3,7 @@ import Header from "./Header/Header.jsx";
 import Main from "./Main/Main.jsx";
 import Footer from "./Footer/Footer.jsx";
 import { api } from "../utils/api.js";
-import { CurrentUserContext } from "../contexts/CurrentUserContext.jsx";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 import EditProfile from "./EditProfile/EditProfile.jsx";
 import EditAvatar from "./EditAvatar/EditAvatar.jsx";
 
